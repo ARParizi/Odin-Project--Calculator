@@ -18,3 +18,36 @@ const key_zero     = document.querySelector('.key.zero');
 const key_negate   = document.querySelector('.key.negate');
 const key_decimal  = document.querySelector('.key.decimal');
 const key_evaluate = document.querySelector('.key.evaluate');
+
+
+let aa ,bb = 0;
+let oo = '';
+
+function operate(op, a, b)
+{
+    let result = 0;
+    switch (op) {
+        case '+':
+            result = add(a, b);
+            break;
+
+        case '-':
+            result = subtract(a, b);
+            break;
+
+        case '*':
+            result = multiply(a, b);
+            break;
+
+        case '/':
+            result = divide(a, b);
+            break;
+    
+        default:
+            break;
+    }
+}
+function add(a, b)      { return a + b; }
+function subtract(a, b) { return a - b; }
+function multiply(a, b) { return a * b; }
+function divide(a, b)   { return a / b; }
