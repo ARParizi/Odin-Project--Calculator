@@ -18,11 +18,16 @@ const key_zero     = document.querySelector('.key.zero');
 const key_negate   = document.querySelector('.key.negate');
 const key_decimal  = document.querySelector('.key.decimal-point');
 const key_evaluate = document.querySelector('.key.evaluate');
-
+let aaa = '';
+let ooo = '';
+let str = '';
+const lcd = document.querySelector('h1');
+function updateLcd()
+{
+    lcd.textContent = str;
+}
 // key_evaluate.style.backgroundColor = "rgb(133, 185, 186)";
-let aa ,bb = 0;
-let oo = '';
-let lcd = '';
+
 
 function operate(op, a, b)
 {
@@ -43,15 +48,22 @@ function operate(op, a, b)
         case '/':
             result = divide(a, b);
             break;
+
+        case '%':
+            result = modulo(a, b);
+            break;
     
         default:
             break;
     }
+
+    return result;
 }
 function add(a, b)      { return a + b; }
 function subtract(a, b) { return a - b; }
 function multiply(a, b) { return a * b; }
 function divide(a, b)   { return a / b; }
+function modulo(a, b)   { return a % b; }
 
 overKeyMouseMoveEventHandlers();
 function overKeyMouseMoveEventHandlers() {
@@ -99,3 +111,131 @@ function overKeyMouseMoveEventHandlers() {
 }
 function mouseOver(e) { this.classList.add("key-mouse-over"); }
 function mouseOut(e)  { this.classList.remove("key-mouse-over"); }
+
+keyMouseClickEventHandlers();
+function keyMouseClickEventHandlers() {
+    key_ac       .addEventListener('click', mouseClickKeyAc);
+    key_modulo   .addEventListener('click', mouseClickKeyModulo);
+    key_delete   .addEventListener('click', mouseClickKeyDelete);
+    key_divide   .addEventListener('click', mouseClickKeyDivide);
+    key_seven    .addEventListener('click', mouseClickKeySeven);
+    key_eight    .addEventListener('click', mouseClickKeyEight);
+    key_nine     .addEventListener('click', mouseClickKeyNine);
+    key_multiply .addEventListener('click', mouseClickKeyMultiply);
+    key_four     .addEventListener('click', mouseClickKeyFour);
+    key_five     .addEventListener('click', mouseClickKeyFive);
+    key_six      .addEventListener('click', mouseClickKeySix);
+    key_subtract .addEventListener('click', mouseClickKeySubtract);
+    key_one      .addEventListener('click', mouseClickKeyOne);
+    key_two      .addEventListener('click', mouseClickKeyTwo);
+    key_three    .addEventListener('click', mouseClickKeyThree);
+    key_add      .addEventListener('click', mouseClickKeyAdd);
+    key_zero     .addEventListener('click', mouseClickKeyZero);
+    key_negate   .addEventListener('click', mouseClickKeyNegate);
+    key_decimal  .addEventListener('click', mouseClickKeyDecimal);
+    key_evaluate .addEventListener('click', mouseClickKeyEvaluate);
+
+    key_ac       .addEventListener('click', updateLcd);
+    key_modulo   .addEventListener('click', updateLcd);
+    key_delete   .addEventListener('click', updateLcd);
+    key_divide   .addEventListener('click', updateLcd);
+    key_seven    .addEventListener('click', updateLcd);
+    key_eight    .addEventListener('click', updateLcd);
+    key_nine     .addEventListener('click', updateLcd);
+    key_multiply .addEventListener('click', updateLcd);
+    key_four     .addEventListener('click', updateLcd);
+    key_five     .addEventListener('click', updateLcd);
+    key_six      .addEventListener('click', updateLcd);
+    key_subtract .addEventListener('click', updateLcd);
+    key_one      .addEventListener('click', updateLcd);
+    key_two      .addEventListener('click', updateLcd);
+    key_three    .addEventListener('click', updateLcd);
+    key_add      .addEventListener('click', updateLcd);
+    key_zero     .addEventListener('click', updateLcd);
+    key_negate   .addEventListener('click', updateLcd);
+    key_decimal  .addEventListener('click', updateLcd);
+    key_evaluate .addEventListener('click', updateLcd);
+}
+
+
+function mouseClickKeyOne(e) {
+    str += '1';
+}
+function mouseClickKeyTwo(e) {
+    str += '2';
+}
+function mouseClickKeyThree(e) {
+    str += '3';
+}
+function mouseClickKeyFour(e) {
+    str += '4';
+}
+function mouseClickKeyFive(e) {
+    str += '5';
+}
+function mouseClickKeySix(e) {
+    str += '6';
+}
+function mouseClickKeySeven(e) {
+    str += '7';
+}
+function mouseClickKeyEight(e) {
+    str += '8';
+}
+function mouseClickKeyNine(e) {
+    str += '9';
+}
+function mouseClickKeyZero(e) {
+    str += '0';
+}
+function mouseClickKeyAdd(e) {
+    aaa = str;
+    str = '';
+    ooo = '+';
+}
+function mouseClickKeySubtract(e) {
+    aaa = str;
+    str = '';
+    ooo = '-';
+}
+function mouseClickKeyMultiply(e) {
+    aaa = str;
+    str = '';
+    ooo = '*';
+}
+function mouseClickKeyDivide(e) {
+    aaa = str;
+    str = '';
+    ooo = '/';
+}
+function mouseClickKeyModulo(e) {
+    aaa = str;
+    str = '';
+    ooo = '%';
+}
+function mouseClickKeyAc(e) {
+    aaa = '';
+    str = '';
+    ooo = '';
+}
+function mouseClickKeyDelete(e) {
+    str = str.slice(0, str.length - 1);
+}
+function mouseClickKeyNegate(e) {
+    if (parseFloat(str) > 0)
+        str = '-' + str;
+    else if (parseFloat(str) < 0)
+        str = str.slice(1);
+}
+function mouseClickKeyDecimal(e) {
+    if (!str.includes('.'))
+    {
+        if (str.length > 0)
+            str += '.';
+        else
+            str += '0.';
+    }
+}
+function mouseClickKeyEvaluate(e) {
+    str = operate(ooo, parseFloat(aaa), parseFloat(str));
+}
