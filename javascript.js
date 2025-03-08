@@ -57,7 +57,7 @@ function operate(op, a, b)
             break;
     }
 
-    return result;
+    return result.toString();
 }
 function add(a, b)      { return a + b; }
 function subtract(a, b) { return a - b; }
@@ -158,70 +158,26 @@ function keyMouseClickEventHandlers() {
 }
 
 
-function mouseClickKeyOne(e) {
-    str += '1';
-}
-function mouseClickKeyTwo(e) {
-    str += '2';
-}
-function mouseClickKeyThree(e) {
-    str += '3';
-}
-function mouseClickKeyFour(e) {
-    str += '4';
-}
-function mouseClickKeyFive(e) {
-    str += '5';
-}
-function mouseClickKeySix(e) {
-    str += '6';
-}
-function mouseClickKeySeven(e) {
-    str += '7';
-}
-function mouseClickKeyEight(e) {
-    str += '8';
-}
-function mouseClickKeyNine(e) {
-    str += '9';
-}
-function mouseClickKeyZero(e) {
-    str += '0';
-}
-function mouseClickKeyAdd(e) {
-    aaa = str;
-    str = '';
-    ooo = '+';
-}
-function mouseClickKeySubtract(e) {
-    aaa = str;
-    str = '';
-    ooo = '-';
-}
-function mouseClickKeyMultiply(e) {
-    aaa = str;
-    str = '';
-    ooo = '*';
-}
-function mouseClickKeyDivide(e) {
-    aaa = str;
-    str = '';
-    ooo = '/';
-}
-function mouseClickKeyModulo(e) {
-    aaa = str;
-    str = '';
-    ooo = '%';
-}
-function mouseClickKeyAc(e) {
-    aaa = '';
-    str = '';
-    ooo = '';
-}
-function mouseClickKeyDelete(e) {
-    str = str.slice(0, str.length - 1);
-}
-function mouseClickKeyNegate(e) {
+function mouseClickKeyOne(e)   { str += '1'; }
+function mouseClickKeyTwo(e)   { str += '2'; }
+function mouseClickKeyThree(e) { str += '3'; }
+function mouseClickKeyFour(e)  { str += '4'; }
+function mouseClickKeyFive(e)  { str += '5'; }
+function mouseClickKeySix(e)   { str += '6'; }
+function mouseClickKeySeven(e) { str += '7'; }
+function mouseClickKeyEight(e) { str += '8'; }
+function mouseClickKeyNine(e)  { str += '9'; }
+function mouseClickKeyZero(e)  { str += '0'; }
+
+function mouseClickKeyAdd(e)      { aaa = str;    str = '';    ooo = '+'; }
+function mouseClickKeySubtract(e) { aaa = str;    str = '';    ooo = '-'; }
+function mouseClickKeyMultiply(e) { aaa = str;    str = '';    ooo = '*'; }
+function mouseClickKeyDivide(e)   { aaa = str;    str = '';    ooo = '/'; }
+function mouseClickKeyModulo(e)   { aaa = str;    str = '';    ooo = '%'; }
+function mouseClickKeyAc(e)       { aaa = '';     str = '';    ooo = ''; }
+
+function mouseClickKeyDelete(e)   { str = str.slice(0, str.length - 1);}
+function mouseClickKeyNegate(e) {     
     if (parseFloat(str) > 0)
         str = '-' + str;
     else if (parseFloat(str) < 0)
@@ -236,6 +192,4 @@ function mouseClickKeyDecimal(e) {
             str += '0.';
     }
 }
-function mouseClickKeyEvaluate(e) {
-    str = operate(ooo, parseFloat(aaa), parseFloat(str));
-}
+function mouseClickKeyEvaluate(e) { str = operate(ooo, parseFloat(aaa), parseFloat(str)); }
