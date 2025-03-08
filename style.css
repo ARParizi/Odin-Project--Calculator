@@ -23,10 +23,12 @@
 }
 
 .key{
+    display: flex;
     width: 87px;
     height: 87px;
     background-color: cadetblue;
-    text-align: center;
+    align-items: center;
+    justify-content: center;
 }
 
 .key-mouse-over{
