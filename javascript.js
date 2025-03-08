@@ -169,7 +169,11 @@ function mouseClickKeyEight(e) { str += '8'; }
 function mouseClickKeyNine(e)  { str += '9'; }
 function mouseClickKeyZero(e)  { str += '0'; }
 
-function mouseClickKeyAdd(e)      { aaa = str;    str = '';    ooo = '+'; }
+function mouseClickKeyAdd(e)      { 
+    aaa = str;    
+    str = '';    
+    ooo = '+'; 
+}
 function mouseClickKeySubtract(e) { aaa = str;    str = '';    ooo = '-'; }
 function mouseClickKeyMultiply(e) { aaa = str;    str = '';    ooo = '*'; }
 function mouseClickKeyDivide(e)   { aaa = str;    str = '';    ooo = '/'; }
@@ -192,4 +196,10 @@ function mouseClickKeyDecimal(e) {
             str += '0.';
     }
 }
-function mouseClickKeyEvaluate(e) { str = operate(ooo, parseFloat(aaa), parseFloat(str)); }
+function mouseClickKeyEvaluate(e) {
+    if (str != '' && aaa != '' && ooo != '') {
+        str = operate(ooo, parseFloat(aaa), parseFloat(str));
+        ooo = '';
+        aaa = '';
+    }
+}
